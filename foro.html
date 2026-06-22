@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#161310">
+<title>NORTE — O Foro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#161310;--surface:#211D18;--surface-2:#2C2620;--line:#3A332A;
+    --text:#EDE6D8;--muted:#9A9081;--bronze:#A87A3C;--gold:#E0A93A;--ember:#D45A2E;
+    --purple:#6E3556;--grace:#F2C879;--grace-veil:rgba(242,200,121,.12);
+    --display:"Cinzel",serif;--body:"EB Garamond",serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:radial-gradient(1100px 560px at 50% -12%,#1d1813,transparent 60%),var(--bg);
+    color:var(--text);font-family:var(--body);font-size:18px;line-height:1.65;
+    -webkit-font-smoothing:antialiased;padding:0 16px 60px;min-height:100vh}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.04;z-index:0;
+    background:repeating-linear-gradient(115deg,#fff 0 1px,transparent 1px 140px),
+      repeating-linear-gradient(60deg,#fff 0 1px,transparent 1px 220px)}
+  .wrap{max-width:440px;margin:0 auto;position:relative;z-index:1;padding-top:30px}
+
+  .top{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);
+    padding-bottom:13px}
+  .brand{font-family:var(--display);font-weight:700;letter-spacing:.26em;font-size:17px;margin-left:.26em;
+    background:linear-gradient(180deg,#F4E4BE,var(--gold) 60%,var(--bronze));
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .dt{font-size:13.5px;color:var(--muted)}
+  .credo{font-family:var(--display);font-size:9.5px;letter-spacing:.38em;color:var(--bronze);
+    text-transform:uppercase;text-align:center;margin:13px 0 22px}
+
+  .greet{font-family:var(--display);font-weight:500;font-size:20px;letter-spacing:.03em}
+  .sub{color:var(--muted);font-style:italic;font-size:16px;margin:2px 0 22px}
+
+  .lbl{font-family:var(--display);font-size:10.5px;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--muted);margin:0 0 12px}
+
+  .march{display:flex;align-items:center;gap:13px;background:var(--surface);border:1px solid var(--line);
+    border-radius:15px;padding:14px 16px;margin-bottom:24px;position:relative;overflow:hidden}
+  .flame{width:30px;height:38px;flex:none;filter:drop-shadow(0 0 9px rgba(224,169,58,.5));
+    animation:flick 3.4s ease-in-out infinite}
+  @keyframes flick{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-1px) scale(1.05)}}
+  .march .big{font-family:var(--display);font-weight:700;font-size:26px;color:var(--gold);line-height:1}
+  .march .big small{font-family:var(--body);font-weight:400;font-size:14.5px;color:var(--muted);
+    display:block;font-style:italic;margin-top:3px;letter-spacing:.02em}
+  .halo{position:absolute;right:-36px;top:-36px;width:120px;height:120px;border-radius:50%;
+    background:radial-gradient(circle,var(--grace-veil),transparent 70%)}
+
+  .pillars{display:flex;align-items:flex-end;justify-content:space-around;gap:16px;height:120px;margin-bottom:10px}
+  .col{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;height:100%;max-width:84px}
+  .shaft{width:34px;flex:1;border-radius:5px 5px 2px 2px;position:relative;overflow:hidden;
+    background:linear-gradient(180deg,#2a241d,#221d17);border:1px solid #322b22}
+  .fill{position:absolute;left:0;right:0;bottom:0;
+    background:repeating-linear-gradient(90deg,rgba(0,0,0,.22) 0 2px,transparent 2px 6px),
+      linear-gradient(180deg,var(--gold),var(--bronze));border-top:1px solid #F0D89A}
+  .col.active .shaft{border-color:var(--bronze);box-shadow:0 0 16px -4px rgba(224,169,58,.4)}
+  .col.rest .fill{background:linear-gradient(180deg,var(--grace),#8a6a3a);opacity:.85}
+  .col.rest .shaft{border-color:#7a5a36}
+  .col.new .shaft{border-style:dashed}
+  .cname{font-size:12px;color:var(--text);text-align:center;letter-spacing:.02em}
+  .cstate{font-size:10.5px;color:var(--muted);text-align:center;margin-top:-4px}
+
+  .frente{background:linear-gradient(180deg,var(--surface-2),var(--surface));border:1px solid var(--line);
+    border-radius:14px;padding:14px 15px;margin:14px 0;position:relative}
+  .frente.rest{border-color:#5a4326;background:linear-gradient(180deg,rgba(242,200,121,.08),transparent)}
+  .frow{display:flex;align-items:center;justify-content:space-between}
+  .fname{font-family:var(--display);letter-spacing:.1em;font-size:13.5px;color:var(--gold);text-transform:uppercase}
+  .frente.rest .fname{color:var(--grace)}
+  .ftag{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
+    border:1px solid var(--line);border-radius:20px;padding:2px 9px}
+  .fnext{color:#d8ccb6;font-style:italic;font-size:15px;margin-top:8px}
+
+  .seal{margin:26px 0 8px;text-align:center;font-style:italic;color:#c9bca3;font-size:16px;line-height:1.5}
+  .seal cite{display:block;font-style:normal;font-family:var(--display);font-size:9.5px;letter-spacing:.14em;
+    color:var(--bronze);margin-top:8px;text-transform:uppercase}
+  .foot{text-align:center;color:#5f584d;font-size:12.5px;margin-top:34px;line-height:1.7}
+  .foot b{font-family:var(--display);color:var(--bronze);letter-spacing:.1em}
+  @media (prefers-reduced-motion:reduce){.flame{animation:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><span class="brand">NORTE</span><span class="dt">O Foro · 22 jun</span></div>
+  <div class="credo">honra · fogo · graça</div>
+
+  <div class="greet">A campanha começou.</div>
+  <div class="sub">dia um. não com um dia perfeito — com um homem que escolheu voltar.</div>
+
+  <div class="lbl">A marcha</div>
+  <div class="march">
+    <span class="halo"></span>
+    <svg class="flame" viewBox="0 0 40 50"><path d="M20 1c3 11-7 12-7 22 0-6-5-7-5-12-4 6-5 10-5 16 0 12 8 22 17 22s17-9 17-21c0-13-9-17-12-28-1 6-5 8-5 14 0-7 5-9 0-13z" fill="url(#fl)"/><defs><linearGradient id="fl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6E0B0"/><stop offset=".5" stop-color="#E0A93A"/><stop offset="1" stop-color="#D45A2E"/></linearGradient></defs></svg>
+    <div class="big">Dia 1<small>a chama foi acesa</small></div>
+  </div>
+
+  <div class="lbl">As três frentes</div>
+  <div class="pillars">
+    <div class="col active">
+      <div class="shaft"><div class="fill" style="height:78%"></div></div>
+      <div class="cname">Treino</div><div class="cstate">firme</div>
+    </div>
+    <div class="col rest">
+      <div class="shaft"><div class="fill" style="height:42%"></div></div>
+      <div class="cname">Corrida</div><div class="cstate">recuperando</div>
+    </div>
+    <div class="col new">
+      <div class="shaft"><div class="fill" style="height:14%"></div></div>
+      <div class="cname">Leitura</div><div class="cstate">nova frente</div>
+    </div>
+  </div>
+
+  <div class="frente">
+    <div class="frow"><span class="fname">Treino</span><span class="ftag">frente firme</span></div>
+    <div class="fnext">já é teu — academia, fim da tarde. Hoje o fogo vai todo pra cá.</div>
+  </div>
+  <div class="frente rest">
+    <div class="frow"><span class="fname">Corrida</span><span class="ftag">em recuperação</span></div>
+    <div class="fnext">o joelho descansa, com juízo. O Ghost te espera — a corrida volta quando a perna sarar.</div>
+  </div>
+  <div class="frente">
+    <div class="frow"><span class="fname">Leitura</span><span class="ftag">recém-aberta</span></div>
+    <div class="fnext">próxima ação: uma página de Marco Aurélio. Só uma. A meta é aparecer.</div>
+  </div>
+
+  <div class="seal">“Levanto-me para a obra de um ser humano.”
+    <cite>Marco Aurélio · Meditações 5.1</cite></div>
+
+  <div class="foot"><b>NORTE</b><br>O Foro · reflexo das tuas frentes reais<br>
+    <span style="opacity:.7">por ora estático — o cron vai atualizar sozinho quando subir a Camada 2.</span></div>
+</div>
+</body>
+</html>
