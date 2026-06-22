@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#161310">
+<title>NORTE — Vitrine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#161310; --surface:#211D18; --surface-2:#2C2620; --line:#3A332A;
+    --text:#EDE6D8; --muted:#9A9081;
+    --bronze:#A87A3C; --gold:#E0A93A; --ember:#D45A2E; --purple:#6E3556;
+    --grace:#F2C879; --grace-veil:rgba(242,200,121,.12);
+    --display:"Cinzel",serif; --body:"EB Garamond",serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:
+      radial-gradient(1200px 600px at 50% -10%, #1d1813 0%, transparent 60%),
+      var(--bg);
+    color:var(--text);font-family:var(--body);font-size:18px;line-height:1.7;
+    -webkit-font-smoothing:antialiased;padding:0 18px 80px;
+    background-attachment:fixed;
+  }
+  /* faint marble veining */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;opacity:.04;z-index:0;
+    background:
+      repeating-linear-gradient(115deg, #fff 0 1px, transparent 1px 140px),
+      repeating-linear-gradient(60deg, #fff 0 1px, transparent 1px 220px);
+  }
+  .wrap{max-width:560px;margin:0 auto;position:relative;z-index:1}
+
+  /* ───────── HERO ───────── */
+  .hero{text-align:center;padding:64px 0 28px}
+  .star{width:46px;height:46px;margin:0 auto 22px;display:block;filter:drop-shadow(0 0 14px var(--grace-veil))}
+  .brand{font-family:var(--display);font-weight:700;letter-spacing:.34em;
+    font-size:clamp(40px,13vw,68px);margin-left:.34em;
+    background:linear-gradient(180deg,#F4E4BE,var(--gold) 55%,var(--bronze));
+    -webkit-background-clip:text;background-clip:text;color:transparent;}
+  .credo{font-family:var(--display);font-weight:500;letter-spacing:.42em;
+    font-size:13px;color:var(--bronze);margin:14px 0 0 .42em;text-transform:uppercase}
+  .tagline{color:var(--muted);font-style:italic;font-size:19px;margin:22px auto 0;max-width:30ch}
+  .vit-note{margin-top:26px;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;
+    color:#6f675b;font-family:var(--display)}
+  .rule{height:1px;width:120px;margin:40px auto;
+    background:linear-gradient(90deg,transparent,var(--bronze),transparent)}
+
+  /* ───────── SECTION CAPTIONS ───────── */
+  .cap{text-align:center;margin:54px 0 22px}
+  .cap h2{font-family:var(--display);font-weight:600;letter-spacing:.16em;font-size:20px;color:var(--gold)}
+  .cap p{color:var(--muted);font-size:16.5px;margin-top:7px}
+
+  /* ───────── PHONE FRAME ───────── */
+  .phone{background:#0d0b09;border:1px solid #2b251d;border-radius:34px;padding:12px;
+    box-shadow:0 30px 60px -24px #000, inset 0 0 0 1px #000;max-width:380px;margin:0 auto}
+  .screen{background:var(--bg);border-radius:24px;overflow:hidden;position:relative;
+    border:1px solid #241f18}
+  .notch{height:22px;display:flex;align-items:center;justify-content:center}
+  .notch::before{content:"";width:74px;height:6px;border-radius:6px;background:#000}
+
+  .pad{padding:22px 20px 26px}
+
+  /* mini brand inside screens */
+  .mini{display:flex;align-items:center;justify-content:space-between;
+    border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:18px}
+  .mini .nm{font-family:var(--display);font-weight:700;letter-spacing:.22em;font-size:14px;
+    color:var(--gold);margin-left:.22em}
+  .mini .dt{font-size:13.5px;color:var(--muted);letter-spacing:.04em}
+  .mini-credo{font-family:var(--display);font-size:9px;letter-spacing:.36em;color:var(--bronze);
+    text-transform:uppercase;text-align:center;margin:-8px 0 18px}
+
+  .greet{font-family:var(--display);font-weight:500;font-size:21px;letter-spacing:.04em;margin-bottom:2px}
+  .sub{color:var(--muted);font-style:italic;font-size:16px;margin-bottom:22px}
+
+  .lbl{font-family:var(--display);font-size:11px;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--muted);margin:0 0 12px}
+
+  /* streak / chama */
+  .march{display:flex;align-items:center;gap:14px;background:var(--surface);
+    border:1px solid var(--line);border-radius:16px;padding:15px 17px;margin-bottom:22px;
+    position:relative;overflow:hidden}
+  .march .flame{width:34px;height:42px;flex:none;filter:drop-shadow(0 0 10px rgba(224,169,58,.55));
+    animation:flick 3.2s ease-in-out infinite}
+  @keyframes flick{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-1px) scale(1.04)}}
+  .march .big{font-family:var(--display);font-weight:700;font-size:30px;
+    color:var(--gold);line-height:1}
+  .march .big small{font-family:var(--body);font-weight:400;font-size:15px;color:var(--muted);
+    display:block;letter-spacing:.02em;margin-top:3px;font-style:italic}
+  .march .halo{position:absolute;right:-40px;top:-40px;width:140px;height:140px;border-radius:50%;
+    background:radial-gradient(circle,var(--grace-veil),transparent 70%)}
+
+  /* pillars / colunas */
+  .pillars{display:flex;align-items:flex-end;justify-content:space-between;gap:9px;
+    height:118px;padding:0 2px;margin-bottom:8px}
+  .col{flex:1;display:flex;flex-direction:column;align-items:center;gap:7px;height:100%}
+  .shaft{width:100%;max-width:30px;flex:1;border-radius:5px 5px 2px 2px;position:relative;
+    background:linear-gradient(180deg,#2a241d,#221d17);
+    border:1px solid #322b22;overflow:hidden}
+  .shaft .fill{position:absolute;left:0;right:0;bottom:0;
+    background:
+      repeating-linear-gradient(90deg, rgba(0,0,0,.22) 0 2px, transparent 2px 6px),
+      linear-gradient(180deg,var(--gold),var(--bronze));
+    border-top:1px solid #F0D89A}
+  .col.active .shaft{border-color:var(--bronze);box-shadow:0 0 16px -4px rgba(224,169,58,.4)}
+  .col .cname{font-size:11px;color:var(--muted);text-align:center;letter-spacing:.02em;line-height:1.2}
+  .col.future .shaft{opacity:.5}
+  .col.future .cname{opacity:.6}
+  .col .cap-i{width:15px;height:15px;opacity:.8}
+
+  /* frente card */
+  .frente{background:linear-gradient(180deg,var(--surface-2),var(--surface));
+    border:1px solid var(--line);border-radius:16px;padding:16px 17px;margin:20px 0 18px;position:relative}
+  .frente .ft{font-family:var(--display);letter-spacing:.16em;font-size:12px;color:var(--gold);
+    text-transform:uppercase;margin-bottom:8px}
+  .frente .fmeta{display:flex;justify-content:space-between;align-items:flex-end;margin-top:12px}
+  .frente .horse{font-size:30px;line-height:1}
+  .frente .km{font-family:var(--display);font-weight:600;font-size:22px;color:var(--text)}
+  .frente .km small{font-family:var(--body);font-style:italic;color:var(--muted);font-size:14px;font-weight:400}
+  .frente .who{color:var(--muted);font-style:italic;font-size:15.5px}
+
+  /* dia conquistado */
+  .won{position:relative;border:1px solid #4a3a1e;border-radius:16px;padding:18px 18px;
+    background:linear-gradient(180deg,rgba(224,169,58,.10),rgba(224,169,58,.02));
+    text-align:center;overflow:hidden}
+  .won::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(105deg,transparent 30%,rgba(246,228,176,.16) 50%,transparent 70%);
+    transform:translateX(-120%);animation:sweep 5.5s ease-in-out 1s infinite}
+  @keyframes sweep{0%{transform:translateX(-120%)}28%,100%{transform:translateX(120%)}}
+  .won .laurel{width:120px;height:34px;margin:0 auto 8px;display:block}
+  .won .wt{font-family:var(--display);font-weight:500;letter-spacing:.05em;font-size:16px;color:var(--grace)}
+  .won .ws{color:var(--muted);font-size:14.5px;font-style:italic;margin-top:3px}
+
+  /* ───────── WIDGETS ───────── */
+  .widgets{display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+  .widget{width:230px;border-radius:24px;padding:20px;border:1px solid #2b251d;
+    box-shadow:0 22px 40px -20px #000;position:relative;overflow:hidden}
+  .w-dark{background:radial-gradient(120px 120px at 78% 16%, #241d14, var(--surface) 70%)}
+  .w-dawn{background:linear-gradient(160deg,#F2C879 0%,#E0A256 36%,#7a5a3a 78%,#3a2c20 100%)}
+  .w-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+  .w-nm{font-family:var(--display);letter-spacing:.2em;font-size:10px;margin-left:.2em}
+  .w-dark .w-nm{color:var(--gold)} .w-dawn .w-nm{color:#3a2c20}
+  .w-flame{width:30px;height:38px;filter:drop-shadow(0 0 9px rgba(224,169,58,.6))}
+  .w-day{font-family:var(--display);font-weight:700;font-size:40px;line-height:1;color:var(--text)}
+  .w-day small{display:block;font-family:var(--body);font-style:italic;font-weight:400;
+    font-size:14px;color:var(--muted);letter-spacing:.03em;margin-top:4px}
+  .w-maxim{margin-top:16px;border-top:1px solid var(--line);padding-top:12px;
+    font-style:italic;font-size:14.5px;color:#cdbfa6;line-height:1.45}
+  .w-maxim cite{display:block;font-style:normal;font-family:var(--display);font-size:10px;
+    letter-spacing:.14em;color:var(--bronze);margin-top:7px;text-transform:uppercase}
+  /* dawn widget */
+  .w-dawn .sun{width:40px;height:40px}
+  .w-dawn .dawn-t{font-family:var(--display);font-weight:600;font-size:21px;line-height:1.25;
+    color:#2a2014;margin-top:6px;letter-spacing:.01em}
+  .w-dawn .dawn-s{font-style:italic;font-size:14.5px;color:#4a3823;margin-top:10px;line-height:1.4}
+  .w-tag{text-align:center;font-family:var(--display);font-size:10px;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--muted);margin-top:14px}
+  .w-dawn-tag{color:#5a4326}
+
+  /* ───────── CRÔNICA ───────── */
+  .chron-head{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+  .chron-head .chi{width:24px;height:24px;flex:none}
+  .chron-head .cd{font-family:var(--display);font-weight:600;letter-spacing:.2em;font-size:15px;color:var(--gold)}
+  .ask{color:var(--muted);font-style:italic;font-size:15px;margin:2px 0 18px;border-left:2px solid var(--bronze);
+    padding-left:12px}
+  .entry{font-size:18px}
+  .entry .dropcap{float:left;font-family:var(--display);font-weight:700;font-size:54px;line-height:.82;
+    padding:6px 12px 0 0;color:var(--gold)}
+  .field{margin:18px 0;padding:14px 15px;border-radius:13px;background:var(--surface);
+    border:1px solid var(--line);border-left:3px solid var(--accent,var(--bronze))}
+  .field.honra{--accent:var(--bronze)} .field.fogo{--accent:var(--ember)} .field.graca{--accent:var(--grace)}
+  .field .fl{display:flex;align-items:center;gap:9px;font-family:var(--display);font-size:11px;
+    letter-spacing:.22em;text-transform:uppercase;color:var(--accent,var(--bronze));margin-bottom:7px}
+  .field .fl svg{width:15px;height:15px}
+  .field.graca{background:linear-gradient(180deg,rgba(242,200,121,.10),transparent)}
+  .field p{font-size:17px;color:#ddd2bd}
+  .quote{margin-top:22px;text-align:center;font-style:italic;color:#c9bca3;font-size:16.5px;line-height:1.5}
+  .quote cite{display:block;font-style:normal;font-family:var(--display);font-size:10px;
+    letter-spacing:.14em;color:var(--bronze);margin-top:9px;text-transform:uppercase}
+
+  .foot{text-align:center;color:#5f584d;font-size:13px;margin-top:60px;line-height:1.7}
+  .foot b{color:var(--bronze);font-weight:500;font-family:var(--display);letter-spacing:.1em}
+
+  @media (prefers-reduced-motion:reduce){
+    .flame,.won::after{animation:none!important}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- HERO -->
+  <header class="hero">
+    <svg class="star" viewBox="0 0 100 100" fill="none">
+      <path d="M50 2 L57 43 L98 50 L57 57 L50 98 L43 57 L2 50 L43 43 Z" fill="url(#g1)"/>
+      <path d="M50 18 L53 47 L82 50 L53 53 L50 82 L47 53 L18 50 L47 47 Z" fill="#161310"/>
+      <circle cx="50" cy="50" r="4" fill="#E0A93A"/>
+      <defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#F4E4BE"/><stop offset="1" stop-color="#A87A3C"/>
+      </linearGradient></defs>
+    </svg>
+    <div class="brand">NORTE</div>
+    <div class="credo">honra · fogo · graça</div>
+    <p class="tagline">o sistema que te mantém apontado pro homem que você foi criado pra ser.</p>
+    <div class="vit-note">Vitrine · aparência &amp; sensação · dados de exemplo</div>
+  </header>
+
+  <div class="rule"></div>
+
+  <!-- ░░░ O FORO ░░░ -->
+  <section class="cap">
+    <h2>O FORO</h2>
+    <p>o painel da campanha — onde você vê o avanço.</p>
+  </section>
+
+  <div class="phone"><div class="screen">
+    <div class="notch"></div>
+    <div class="pad">
+      <div class="mini">
+        <span class="nm">NORTE</span>
+        <span class="dt">Dom · 22 jun</span>
+      </div>
+      <div class="mini-credo">honra · fogo · graça</div>
+
+      <div class="greet">Bom dia, Silvano.</div>
+      <div class="sub">o Ghost já está de pé.</div>
+
+      <div class="lbl">A marcha</div>
+      <div class="march">
+        <span class="halo"></span>
+        <svg class="flame" viewBox="0 0 40 50"><path d="M20 1c3 11-7 12-7 22 0-6-5-7-5-12-4 6-5 10-5 16 0 12 8 22 17 22s17-9 17-21c0-13-9-17-12-28-1 6-5 8-5 14 0-7 5-9 0-13z" fill="url(#fl)"/><defs><linearGradient id="fl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6E0B0"/><stop offset=".5" stop-color="#E0A93A"/><stop offset="1" stop-color="#D45A2E"/></linearGradient></defs></svg>
+        <div class="big">12<small>dias em marcha — sem quebrar</small></div>
+      </div>
+
+      <div class="lbl">As frentes</div>
+      <div class="pillars">
+        <div class="col active">
+          <div class="shaft"><div class="fill" style="height:88%"></div></div>
+          <div class="cname">Corrida</div>
+        </div>
+        <div class="col">
+          <div class="shaft"><div class="fill" style="height:40%"></div></div>
+          <div class="cname">Leitura</div>
+        </div>
+        <div class="col">
+          <div class="shaft"><div class="fill" style="height:55%"></div></div>
+          <div class="cname">Treino</div>
+        </div>
+        <div class="col future">
+          <div class="shaft"><div class="fill" style="height:0%"></div></div>
+          <div class="cname">Crônica</div>
+        </div>
+        <div class="col future">
+          <div class="shaft"><div class="fill" style="height:0%"></div></div>
+          <div class="cname">Guitarra</div>
+        </div>
+      </div>
+
+      <div class="frente">
+        <div class="ft">Frente ativa · Corrida</div>
+        <div class="who">com o Ghost — teu Bucéfalo.</div>
+        <div class="fmeta">
+          <span class="horse">🐺</span>
+          <span class="km">3/3 <small>esta semana · 17 km</small></span>
+        </div>
+      </div>
+
+      <div class="won">
+        <svg class="laurel" viewBox="0 0 120 34" fill="none" stroke="#E0A93A" stroke-width="1.6" stroke-linecap="round">
+          <path d="M60 30 V11"/>
+          <path d="M52 28c-9-1-15-6-17-15M52 28c-7-3-10-7-11-13M52 23c-7-1-11-5-12-11M52 18c-6-1-9-4-10-9"/>
+          <path d="M68 28c9-1 15-6 17-15M68 28c7-3 10-7 11-13M68 23c7-1 11-5 12-11M68 18c6-1 9-4 10-9"/>
+          <circle cx="60" cy="7" r="3" fill="#E0A93A" stroke="none"/>
+        </svg>
+        <div class="wt">Dia conquistado.</div>
+        <div class="ws">Você cumpriu o que prometeu a si mesmo.</div>
+      </div>
+    </div>
+  </div></div>
+
+  <!-- ░░░ O SELO DO DIA ░░░ -->
+  <section class="cap">
+    <h2>O SELO DO DIA</h2>
+    <p>o widget no teu celular — um olhar, e você sabe onde está.</p>
+  </section>
+
+  <div class="widgets">
+    <!-- estado em campanha -->
+    <div class="widget w-dark">
+      <div class="w-top">
+        <span class="w-nm">NORTE</span>
+        <svg class="w-flame" viewBox="0 0 40 50"><path d="M20 1c3 11-7 12-7 22 0-6-5-7-5-12-4 6-5 10-5 16 0 12 8 22 17 22s17-9 17-21c0-13-9-17-12-28-1 6-5 8-5 14 0-7 5-9 0-13z" fill="url(#fl2)"/><defs><linearGradient id="fl2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F6E0B0"/><stop offset=".5" stop-color="#E0A93A"/><stop offset="1" stop-color="#D45A2E"/></linearGradient></defs></svg>
+      </div>
+      <div class="w-day">Dia 12<small>em marcha</small></div>
+      <div class="w-maxim">“Levanto-me para a obra de um ser humano.”
+        <cite>Marco Aurélio · 5.1</cite></div>
+      <div class="w-tag">em campanha</div>
+    </div>
+
+    <!-- estado de recaída · alvorada -->
+    <div class="widget w-dawn">
+      <div class="w-top">
+        <span class="w-nm">NORTE</span>
+        <svg class="sun" viewBox="0 0 40 40" fill="none" stroke="#3a2c20" stroke-width="2" stroke-linecap="round">
+          <circle cx="20" cy="22" r="8" fill="#fff5dc" stroke="none"/>
+          <path d="M20 4v5M32 10l-3 3M36 22h-5M9 13L6 10M9 22H4"/>
+          <path d="M2 32h36" stroke-width="2.4"/>
+        </svg>
+      </div>
+      <div class="dawn-t">A graça recomeça a manhã.</div>
+      <div class="dawn-s">Ontem o Ghost ficou esperando. Hoje vocês correm. Levanta.</div>
+      <div class="w-tag w-dawn-tag">sem culpa · só a manhã nova</div>
+    </div>
+  </div>
+
+  <!-- ░░░ A CRÔNICA ░░░ -->
+  <section class="cap">
+    <h2>A CRÔNICA</h2>
+    <p>o teu diário, escrito comigo — eu trago a pergunta, você responde.</p>
+  </section>
+
+  <div class="phone"><div class="screen">
+    <div class="notch"></div>
+    <div class="pad">
+      <div class="chron-head">
+        <svg class="chi" viewBox="0 0 40 40" fill="none" stroke="#A87A3C" stroke-width="2.4" stroke-linecap="round">
+          <path d="M20 5 V35"/><path d="M9 9 L31 31"/><path d="M31 9 L9 31"/>
+          <path d="M20 8 c7 0 9 9 2 11" stroke="#E0A93A"/>
+        </svg>
+        <span class="cd">XXII · JUNHO</span>
+      </div>
+      <div class="ask">“Corre comigo hoje? E qual a promessa que você faz a si mesmo?”</div>
+
+      <div class="entry">
+        <span class="dropcap">C</span>
+        orri com o Ghost mesmo sem vontade. O céu ainda estava cinza, mas a gente foi. No fim, valeu — sempre vale.
+      </div>
+
+      <div class="field honra">
+        <div class="fl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 21V7M18 21V7M4 21h16M6 7h12M8 7V4h8v3"/></svg> Honra</div>
+        <p>Cumpri o que prometi a mim mesmo. Fui o homem que aparece, não o que arruma desculpa.</p>
+      </div>
+      <div class="field fogo">
+        <div class="fl"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c1.6 6-4 6.5-4 12 0-3-2.5-3.5-2.5-6C3.4 11 3 13 3 16c0 5 4 6 9 6s9-4 9-9c0-6.5-4.5-8.5-6-14-.6 3-2.5 4-2.5 7 0-3.5 2.5-4.5 0-6z"/></svg> Fogo</div>
+        <p>Fechei o nome do Norte. Senti o <em>pothos</em> de novo — aquela vontade de avançar.</p>
+      </div>
+      <div class="field graca">
+        <div class="fl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="13" r="4.5"/><path d="M12 2v4M20 6l-3 3M22 13h-4M4 6l3 3M2 13h4M3 21h18"/></svg> Graça</div>
+        <p>Perdi a leitura ontem. Tudo bem — não falho duas vezes. Recomeço hoje, uma página.</p>
+      </div>
+
+      <div class="quote">“Não percas mais tempo discutindo o que um bom homem deve ser. Sê um.”
+        <cite>Marco Aurélio · Meditações 10.16</cite></div>
+    </div>
+  </div></div>
+
+  <div class="foot">
+    <b>NORTE</b><br>
+    honra, fogo e graça · uma campanha de uma vida<br>
+    <span style="opacity:.7">vitrine de aparência — o motor (WhatsApp, ritual diário, dados reais) vem depois.</span>
+  </div>
+
+</div>
+</body>
+</html>
